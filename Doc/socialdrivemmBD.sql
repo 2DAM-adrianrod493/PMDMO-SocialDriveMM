@@ -1,4 +1,8 @@
-
+--Borrar la BD si exsiste
+DROP DATABASE socialdrivers IF EXISTS;
+--Crear la BD
+CREATE DATABASE socialdrivers;
+USE socialdrivers;
 -- Tabla Rol
 CREATE TABLE Rol (
     id_rol INT AUTO_INCREMENT PRIMARY KEY,
@@ -18,7 +22,6 @@ CREATE TABLE Usuario (
     password VARCHAR(100) NOT NULL,
     email VARCHAR(100),
     rol_id INT,
-    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (rol_id) REFERENCES Rol(id_rol)
 );
 
