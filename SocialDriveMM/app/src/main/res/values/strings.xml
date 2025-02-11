@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">SocialDriveMM</string>
+    <string name="passtxt">Escriba su password...</string>
+    <string name="logtxt">Iniciar sesión</string>
+    <string name="mailtxt">Escriba su email...</string>
+    <string name="loginheader">LOGIN</string>
 </resources>
