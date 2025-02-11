@@ -4,4 +4,8 @@
     <string name="logtxt">Iniciar sesión</string>
     <string name="mailtxt">Escriba su email...</string>
     <string name="loginheader">LOGIN</string>
+
+
+    <string name="login_email_hint">Email</string>
+    <string name="login_password_hint">Password</string>
 </resources>
