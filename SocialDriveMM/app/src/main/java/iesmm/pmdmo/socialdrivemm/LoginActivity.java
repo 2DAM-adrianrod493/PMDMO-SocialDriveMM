@@ -30,30 +30,30 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
-        Button boton = findViewById(R.id.loguear);
-        boton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //accion al realizar click
-                String usuario = ((EditText) findViewById(R.id.inputUser)) ;
-                String contrasena = ((EditText) findViewById(R.id.inputPassword));
-                if(getAcces(usuario,contrasena)){
-                    Snackbar.make(v,"Bienvenido",Snackbar.LENGTH_SHORT).show();
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(intent);
-                }else{
-                    Snackbar.make(v,"Usuario o contraseña incorrectos",Snackbar.LENGTH_SHORT).show();
-                }
-            }
-
-
-        });
+//        Button boton = findViewById(R.id.loguear);
+//        boton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //accion al realizar click
+//                String usuario = ((EditText) findViewById(R.id.inputUser)) ;
+//                String contrasena = ((EditText) findViewById(R.id.inputPassword));
+//                if(getAcces(usuario,contrasena)){
+//                    Snackbar.make(v,"Bienvenido",Snackbar.LENGTH_SHORT).show();
+//                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+//                    startActivity(intent);
+//                }else{
+//                    Snackbar.make(v,"Usuario o contraseña incorrectos",Snackbar.LENGTH_SHORT).show();
+//                }
+//            }
+//
+//
+//        });
 
 
     }
-    public void connect(){
-        ExecutorService
-    }
+//    public void connect(){
+//        ExecutorService
+//    }
 
     private boolean getAcces(String usuario, String contrasenia) {
         boolean encontrado = false;

@@ -33,31 +33,21 @@ android {
 }
 
 dependencies {
-    // Si no estás usando un archivo `libs.versions.toml`, puedes agregar las dependencias directamente
-    implementation("mysql:mysql-connector-java:5.1.49") // Asegúrate de que se pueda usar para pruebas en Android, como mencioné antes
+
 
     // Otras dependencias
-    implementation("androidx.appcompat:appcompat:1.6.1") // Versión más reciente disponible
-    implementation("com.google.android.material:material:1.8.0") // Última versión estable
-    implementation("androidx.activity:activity:1.10.0") // Última versión estable
+    implementation(libs.appcompat.v161) // Versión más reciente disponible
+    implementation(libs.material.v180) // Última versión estable
+    implementation(libs.activity) // Última versión estable
 
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4") // Última versión
+    implementation(libs.constraintlayout.v214) // Última versión
 
     // Dependencias de prueba
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.junit.v115)
+    androidTestImplementation(libs.espresso.core.v351)
 
-    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation("com.android.support:appcompat-v7:28.0.0")
-    implementation("com.android.support.constraint:constraint-layout:1.1.3")
-    testImplementation("junit:junit:4.12")
-    androidTestImplementation("com.android.support.test:runner:1.0.2")
-    androidTestImplementation("com.android.support.test.espresso:espresso-core:3.0.2")
-    implementation("com.android.support:design:28.0.0")
-    // animated button for login
-    implementation("br.com.simplepass:loading-button-android:1.14.0")
 
     // https://mvnrepository.com/artifact/mysql/mysql-connector-java
-    implementation("mysql:mysql-connector-java:5.1.49")
+    implementation(libs.mysql.connector.java)
 }
