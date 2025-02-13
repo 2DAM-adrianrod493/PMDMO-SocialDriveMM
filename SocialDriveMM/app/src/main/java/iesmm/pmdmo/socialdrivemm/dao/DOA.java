@@ -7,6 +7,5 @@ public interface DOA {
     public void update(String sql);
     public void delete(String sql);
     public ResultSet select(String sql);
-    public boolean getAccess(String useranme, String password, Conexion conn);
 
 }
