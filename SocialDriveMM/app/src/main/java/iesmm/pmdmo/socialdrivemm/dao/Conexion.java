@@ -12,7 +12,7 @@ public class Conexion {
     protected static String ip = "10.0.2.2";
     protected static String port = "3306";
     protected static String username = "root";
-    protected static String password = "root";
+    protected static String password = "";
 
     public Connection CONN() {
 
@@ -26,4 +26,5 @@ public class Conexion {
         }
         return conn;
     }
+
 }
