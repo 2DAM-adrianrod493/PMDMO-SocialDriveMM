@@ -1,4 +1,4 @@
-package iesmm.pmdmo.socialdrivemm;
+package iesmm.pmdmo.socialdrivemm.view;
 
 import static android.graphics.ColorSpace.connect;
 
@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import iesmm.pmdmo.socialdrivemm.R;
 import iesmm.pmdmo.socialdrivemm.dao.Conexion;
 
 import androidx.annotation.Nullable;
@@ -16,9 +17,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

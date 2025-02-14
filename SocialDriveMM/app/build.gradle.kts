@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.google.android.libraries.mapsplatform.secrets.gradle.plugin)
 }
 
 android {
@@ -40,7 +41,8 @@ dependencies {
     implementation(libs.material.v180) // Última versión estable
     implementation(libs.activity) // Última versión estable
 
-    implementation(libs.constraintlayout.v214) // Última versión
+    implementation(libs.constraintlayout.v214)
+    implementation(libs.play.services.maps) // Última versión
 
     // Dependencias de prueba
     testImplementation(libs.junit)
