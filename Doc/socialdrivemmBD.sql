@@ -56,3 +56,23 @@ INSERT INTO Usuario (username, password, email, rol_id) VALUES ('user1', '1234',
 -- Cargamos Marcadores
 INSERT INTO Marcador (usuario_id, latitud, longitud, descripcion, tipo_marcador_id) VALUES (2, 37.2713, -6.9485, 'Radar móvil en la Autopista Huelva-Sevilla', 1);
 INSERT INTO Marcador (usuario_id, latitud, longitud, descripcion, tipo_marcador_id) VALUES (2, 37.2566, -7.1740, 'Control de Alcoholemia en la rotonda del Polígono de Lepe', 2);
+
+-- Function para sacar el rol de un Usuario
+DELIMITER $$
+
+CREATE FUNCTION rolnombre(nameuser VARCHAR(50)) RETURNS VARCHAR(50) DETERMINISTIC
+BEGIN
+
+	DECLARE nombrerol VARCHAR(50);
+
+    SELECT r.nombre_rol 
+    INTO nombrerol
+    FROM rol r
+    JOIN usuario u ON r.id_rol = u.rol_id
+    WHERE u.username = nameuser
+    LIMIT 1; 
+
+    RETURN nombrerol;
+
+END$$
+DELIMITER ;
