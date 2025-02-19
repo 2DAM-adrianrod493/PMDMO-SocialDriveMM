@@ -12,4 +12,5 @@
 
     <string name="open_nav">Navegador Abierto</string>
     <string name="close_nav">Navegador Cerrado</string>
+    <string name="siguptxt">Registrar</string>
 </resources>

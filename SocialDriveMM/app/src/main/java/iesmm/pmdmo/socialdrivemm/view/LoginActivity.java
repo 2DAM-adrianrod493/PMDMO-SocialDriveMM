@@ -1,9 +1,13 @@
 package iesmm.pmdmo.socialdrivemm.view;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,6 +30,26 @@ public class LoginActivity extends AppCompatActivity {
         EditText username = findViewById(R.id.editTextEmail);
         EditText password = findViewById(R.id.editTextPassword);
         Button iniciarSesion = findViewById(R.id.cirLoginButton);
+        TextView logIn = findViewById(R.id.loginTxtView);
+        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) ImageView imgmas = findViewById(R.id.imgRegisterbtn);
+
+        logIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right,R.anim.stay);
+            }
+        });
+
+        imgmas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right,R.anim.stay);
+            }
+        });
 
         iniciarSesion.setOnClickListener(view -> {
             String user = username.getText().toString().trim();

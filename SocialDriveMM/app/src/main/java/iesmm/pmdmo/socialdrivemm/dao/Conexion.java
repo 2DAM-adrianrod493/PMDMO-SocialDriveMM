@@ -7,10 +7,10 @@ import java.sql.DriverManager;
 public class Conexion {
 
     protected static String db = "socialdrivers";
-    protected static String ip = "10.0.2.2";
+    protected static String ip = "192.168.1.23";
     protected static String port = "3306";
-    protected static String username = "root";
-    protected static String password = "";
+    protected static String username = "social";
+    protected static String password = "P@blo1234";
 
     public Connection CONN() {
         Connection conn = null;

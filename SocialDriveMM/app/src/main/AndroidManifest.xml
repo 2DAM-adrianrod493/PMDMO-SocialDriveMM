@@ -38,6 +38,9 @@
         <activity android:name=".view.AdminActivity" />
 
         <activity android:name=".view.MainActivity" />
+
+        <activity android:name=".view.RegisterActivity"/>
+
     </application>
 
 </manifest>

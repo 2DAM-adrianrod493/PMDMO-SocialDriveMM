@@ -3,6 +3,7 @@ package iesmm.pmdmo.socialdrivemm.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.HashMap;
@@ -301,6 +302,25 @@ public class DaoImplem implements DOA {
         });
     }
 
+    public void insertUsuario(String username, String password, String email){
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        executor.execute(()->{
+            if(conn==null){
+                connect();
+            }
+            String sql = "INSERT INTO Usuario (username, password, email)" +
+                    "    VALUES (?, ?, ?); ";
+            try {
+                PreparedStatement stm = conn.prepareStatement(sql);
+                stm.setString(1, username);
+                stm.setString(2, password);
+                stm.setString(3, email);
+                stm.executeUpdate();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        });
+    }
     @Override
     public void insert(String sql) { }
     @Override
