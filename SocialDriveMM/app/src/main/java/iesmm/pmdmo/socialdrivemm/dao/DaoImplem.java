@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.HashMap;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -15,9 +14,10 @@ import java.util.concurrent.Future;
 
 import iesmm.pmdmo.socialdrivemm.model.Marcador;
 import iesmm.pmdmo.socialdrivemm.model.Rol;
+import iesmm.pmdmo.socialdrivemm.model.TipoMarcador;
 import iesmm.pmdmo.socialdrivemm.model.Usuario;
 
-public class DaoImplem implements DOA {
+public class DaoImplem implements DAO {
     private Conexion conexion;
     private Connection conn;
 
@@ -43,6 +43,35 @@ public class DaoImplem implements DOA {
     @Override
     public Connection getConnection() {
         return conn;
+    }
+
+    // Obtener tipo maracador:
+    public List<TipoMarcador> getTipoMarcadores() {
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        Callable<List<TipoMarcador>> task = () -> {
+            List<TipoMarcador> lista = new ArrayList<>();
+            if (conn == null) {
+                connect();
+            }
+            String query = "SELECT id_tipo_marcador, nombre_tipo FROM Tipo_Marcador";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id_tipo_marcador");
+                String nombre = rs.getString("nombre_tipo");
+                lista.add(new TipoMarcador(id, nombre));
+            }
+            return lista;
+        };
+        Future<List<TipoMarcador>> future = executor.submit(task);
+        try {
+            return future.get();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        } finally {
+            executor.shutdown();
+        }
     }
 
     // Validamos Credenciales
@@ -302,6 +331,7 @@ public class DaoImplem implements DOA {
         });
     }
 
+    //Registrar nuevo usuario
     public void insertUsuario(String username, String password, String email){
         ExecutorService executor = Executors.newSingleThreadExecutor();
         executor.execute(()->{
@@ -321,18 +351,5 @@ public class DaoImplem implements DOA {
             }
         });
     }
-    @Override
-    public void insert(String sql) { }
-    @Override
-    public void update(String sql) { }
-    @Override
-    public void delete(String sql) { }
-    @Override
-    public HashMap<Integer, ArrayList<String>> obtenerMarcadoresTodoUsuarios(String sql) {
-        return null;
-    }
-    @Override
-    public Boolean executeProcedimiento(String nombreProcedimiento) {
-        return null;
-    }
+
 }
