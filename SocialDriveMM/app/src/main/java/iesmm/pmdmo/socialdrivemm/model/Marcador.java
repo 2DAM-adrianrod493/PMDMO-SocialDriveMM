@@ -20,7 +20,6 @@ public class Marcador {
         this.fechaPublicacion = fechaPublicacion;
     }
 
-    // Getters y setters
     public int getIdMarcador() { return idMarcador; }
     public double getLatitud() { return latitud; }
     public double getLongitud() { return longitud; }

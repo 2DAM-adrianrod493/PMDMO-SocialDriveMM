@@ -31,9 +31,9 @@
                     android:text="¿Problemas \n con el tráfico? \n ¡Regístrate Ya!"
                     android:textColor="#3B0B46"/>
                 <ImageView
-                    android:layout_width="160dp"
+                    android:layout_width="150dp"
                     android:layout_height="160dp"
-                    android:src="@drawable/login_icon"
+                    android:src="@drawable/logo"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"/>
             </RelativeLayout>
@@ -48,7 +48,8 @@
                     style="@style/modifiedEditText"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
-                    android:hint="@string/login_email_hint"/>
+                    android:hint="@string/login_email_hint"
+                    android:minHeight="48dp"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -61,7 +62,8 @@
                     style="@style/modifiedEditText"
                     android:hint="@string/login_password_hint"
                     android:maxLines="1"
-                    android:inputType="textPassword"/>
+                    android:inputType="textPassword"
+                    android:minHeight="48dp"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button

@@ -1,10 +1,8 @@
 package iesmm.pmdmo.socialdrivemm.dao;
 
 import android.util.Log;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 
 public class Conexion {
 
@@ -15,7 +13,6 @@ public class Conexion {
     protected static String password = "";
 
     public Connection CONN() {
-
         Connection conn = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -26,5 +23,4 @@ public class Conexion {
         }
         return conn;
     }
-
 }

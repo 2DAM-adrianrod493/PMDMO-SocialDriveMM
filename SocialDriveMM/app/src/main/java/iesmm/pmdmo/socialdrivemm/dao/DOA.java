@@ -1,7 +1,6 @@
 package iesmm.pmdmo.socialdrivemm.dao;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -12,8 +11,8 @@ public interface DOA {
     HashMap<Integer, ArrayList<String>> obtenerMarcadoresTodoUsuarios(String sql);
     Boolean executeProcedimiento(String nombreProcedimiento);
 
-    // Métodos agregados
-    void connect(); // Metodo para establecer la conexión
-    Connection getConnection(); // Obtener la conexión actual
-    boolean getAccess(String username, String password); // Verificar acceso de usuario
+    // Métodos
+    void connect();
+    Connection getConnection();
+    boolean getAccess(String username, String password);
 }

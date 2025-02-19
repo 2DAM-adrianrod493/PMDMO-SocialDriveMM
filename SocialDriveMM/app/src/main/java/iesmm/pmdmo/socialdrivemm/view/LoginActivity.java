@@ -21,7 +21,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
 
-        daoImplem = new DaoImplem(); // Se inicializa DAO
+        daoImplem = new DaoImplem();
 
         EditText username = findViewById(R.id.editTextEmail);
         EditText password = findViewById(R.id.editTextPassword);
@@ -31,17 +31,23 @@ public class LoginActivity extends AppCompatActivity {
             String user = username.getText().toString().trim();
             String pass = password.getText().toString().trim();
 
-            // 1) Validar credenciales
             if (daoImplem.getAccess(user, pass)) {
-                // 2) Obtener el id_usuario de ese username
                 int userId = daoImplem.getUserId(user);
+                String rol = daoImplem.getRolUsuario(user);
 
-                // 3) Pasarlo a la MainActivity mediante Intent
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                intent.putExtra("userId", userId);
-                startActivity(intent);
-
-                finish(); // Cierra la pantalla de login
+                if ("Admin".equalsIgnoreCase(rol)) {
+                    // Rol administrador
+                    Intent intent = new Intent(LoginActivity.this, AdminActivity.class);
+                    intent.putExtra("userId", userId);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    // Rol usuario
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    intent.putExtra("userId", userId);
+                    startActivity(intent);
+                    finish();
+                }
             } else {
                 Snackbar.make(view, "Usuario o contraseña incorrectos", Snackbar.LENGTH_LONG).show();
             }

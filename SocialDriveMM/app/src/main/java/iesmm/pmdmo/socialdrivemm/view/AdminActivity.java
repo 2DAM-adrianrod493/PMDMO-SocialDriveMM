@@ -16,7 +16,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import iesmm.pmdmo.socialdrivemm.R;
 
-public class MainActivity extends AppCompatActivity
+public class AdminActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawerLayout;
@@ -25,16 +25,16 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_admin);
 
         userId = getIntent().getIntExtra("userId", -1);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar_admin);
         setSupportActionBar(toolbar);
 
-        drawerLayout = findViewById(R.id.main);
+        drawerLayout = findViewById(R.id.drawer_admin);
 
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view_admin);
         navigationView.setNavigationItemSelectedListener(this);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -50,36 +50,24 @@ public class MainActivity extends AppCompatActivity
         if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.fragment_container, new MapFragment())
+                    .replace(R.id.admin_fragment_container, new ListaUsuariosFragment())
                     .commit();
-            navigationView.setCheckedItem(R.id.nav_map);
+            navigationView.setCheckedItem(R.id.nav_lista_usuarios);
         }
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-        if (item.getItemId() == R.id.nav_map) {
+        if (item.getItemId() == R.id.nav_lista_usuarios) {
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container, new MapFragment())
-                    .commit();
-
-        } else if (item.getItemId() == R.id.nav_lista) {
-            // Lista de marcadores del usuario
-            ListaMarcadoresFragment fragment = new ListaMarcadoresFragment();
-            Bundle args = new Bundle();
-            args.putInt("userId", userId);
-            fragment.setArguments(args);
-
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container, fragment)
+                    .replace(R.id.admin_fragment_container, new ListaUsuariosFragment())
                     .commit();
 
         } else if (item.getItemId() == R.id.nav_logout) {
             Toast.makeText(this, "Saliendo...", Toast.LENGTH_SHORT).show();
 
-            // Iniciamos el login
-            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            // Iniciamos login
+            Intent intent = new Intent(AdminActivity.this, LoginActivity.class);
             startActivity(intent);
 
             finish();

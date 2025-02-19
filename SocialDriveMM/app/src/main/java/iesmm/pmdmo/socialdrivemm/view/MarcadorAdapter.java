@@ -12,8 +12,8 @@ import androidx.annotation.Nullable;
 
 import java.util.List;
 
-import iesmm.pmdmo.socialdrivemm.model.Marcador;
 import iesmm.pmdmo.socialdrivemm.R;
+import iesmm.pmdmo.socialdrivemm.model.Marcador;
 
 public class MarcadorAdapter extends ArrayAdapter<Marcador> {
 
@@ -39,8 +39,11 @@ public class MarcadorAdapter extends ArrayAdapter<Marcador> {
 
         if (marcador != null) {
             tvDescripcion.setText(marcador.getDescripcion());
-            // Si quieres mostrar solo fecha, formatea el Timestamp a tu gusto
-            tvFecha.setText(marcador.getFechaPublicacion().toString());
+            if (marcador.getFechaPublicacion() != null) {
+                tvFecha.setText(marcador.getFechaPublicacion().toString());
+            } else {
+                tvFecha.setText("No hay fecha");
+            }
         }
 
         return convertView;
